@@ -4,7 +4,7 @@ Basic kit for setting up a frontend workflow using Bootstrap LESS. Especially us
 ## Installation.
 Just clone away:
 ```bash
-$ git clone
+$ git clone https://github.com/lifeBalance/gualtrapa-less
 ```
 Install the packages:
 ```bash
@@ -162,12 +162,11 @@ gualtrapa
 ```
 ## Used packages
 For creating the Gulp workflow I used the following packages:
-* [gulp]() itself, obviously. No introductions required.
+* [gulp](https://www.npmjs.com/package/gulp) itself, obviously. No introductions required.
 * [gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer), plugin that adds vendor prefixes automatically when needed.
 * [gulp-concat](https://www.npmjs.com/package/gulp-concat), to concatenate files, mainly our JavaScripts.
 * [gulp-connect](https://www.npmjs.com/package/gulp-connect), it runs a webserver with **livereload**.
 * [gulp-less](https://www.npmjs.com/package/gulp-less) for compiling our LESS to CSS.
-* [gulp-livereload]()
 * [gulp-load-plugins](https://www.npmjs.com/package/gulp-load-plugins), it loads automatically any plugin listed in our `package.json` file, no need of requiring it in our `gulpfile.js`.
 * [gulp-minify-css](https://www.npmjs.com/package/gulp-minify-css), to minify CSS, using [clean-css](https://github.com/jakubpawlowicz/clean-css)
 * [gulp-rename](https://www.npmjs.com/package/gulp-rename), plugin to rename files easily.
