@@ -145,34 +145,40 @@ gulp.task('scripts', ['jshint'], function() {
 *     $ gulp minify-main-styles                  *
 *                                                *
 **************************************************/
+gulp.task('production', ['compress-scripts', 'minify-main-styles'])
+
 /* Javascript Minification */
-gulp.task('compress-scripts', ['concat-scripts'], function() {
-  return gulp.src('dist/js/bootstrap.js')
-    .pipe(plugins.rename('bootstrap.min.js'))
+gulp.task('compress-scripts', ['scripts'], function() {
+  return gulp.src('dist/js/*')
+    .pipe(plugins.rename({
+      extname: ".min.js"
+    }))
     .pipe(plugins.uglify())
     .pipe(gulp.dest('dist/js'));
 });
 
-// It generates 'bootstrap.css'. Interesting for learning purposes.
+/* CSS Minification */
+gulp.task('minify-main-styles', ['less'], function() {
+  return gulp.src('dist/css/*')
+    .pipe(plugins.rename({
+      extname: ".min.css"
+    }))
+    .pipe(plugins.minifyCss({compatibility: 'ie8'}))
+    .pipe(gulp.dest('dist/css'));
+});
+
+// It generates 'bootstrap.css'. (For illustrative purposes)
 gulp.task('compile-bootstrap', function () {
   return gulp.src('source/less/bootstrap/bootstrap.less')
     .pipe(plugins.less({}))
     .pipe(gulp.dest('dist/css'));
 });
 
-// It generates 'bootstrap-theme.css'. Interesting for learning purposes.
+// It generates 'bootstrap-theme.css'. (For illustrative purposes)
 gulp.task('compile-bootstrap-theme', function () {
   return gulp.src('source/less/bootstrap/theme.less')
     .pipe(plugins.rename('bootstrap-theme.less'))
     .pipe(plugins.less({}))
-    .pipe(gulp.dest('dist/css'));
-});
-
-/* CSS Minification */
-gulp.task('minify-main-styles', function() {
-  return gulp.src('dist/css/main.css')
-    .pipe(plugins.rename('main.min.css'))
-    .pipe(plugins.minifyCss({compatibility: 'ie8'}))
     .pipe(gulp.dest('dist/css'));
 });
 
