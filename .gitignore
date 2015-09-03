@@ -1,6 +1,6 @@
 # Ignoring generated files
-dist
-node_modules
+dist/
+node_modules/
 npm-debug.log
 dist/css/**
 dist/js/**
