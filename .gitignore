@@ -1,8 +1,9 @@
 # Ignoring generated files
-dist/
-node_modules/
-npm-debug.log
 dist/css/**
 dist/js/**
-*.html
-!source/templates/**/*.html
+dist/*.html
+
+# Ignoring Node modules
+node_modules/
+
+npm-debug.log
