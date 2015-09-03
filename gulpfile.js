@@ -23,9 +23,9 @@ gulp.task('serve', function() {
 
   gulp.watch("js/scripts.js").on('change', browserSync.reload);
 
+  // gulp.watch("css/*.css").on('change', browserSync.reload);
   /* In this case, I don't reload the browser when the css changes,
      because the 'less' task injects into the stream the css. */
-  // gulp.watch("css/*.css").on('change', browserSync.reload);
 });
 
 /*******************
@@ -78,7 +78,7 @@ function errorAlert(error){
 };
 
 
-gulp.task('main-styles', function () {
+gulp.task('less', function () {
   return gulp.src('source/less/main.less')
     .pipe(plugins.plumber({ errorHandler: errorAlert }))
     .pipe(plugins.less({}))
@@ -94,7 +94,8 @@ gulp.task('main-styles', function () {
                 'IE 11'],
         cascade: false
     }))
-    .pipe(gulp.dest('dist/css'));
+    .pipe(gulp.dest('dist/css'))
+    .pipe(browserSync.stream());
 });
 
 /*************
